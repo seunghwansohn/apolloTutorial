@@ -1,7 +1,7 @@
 import React from 'react';
 import {gql} from 'apollo-boost'
 import {useQuery} from '@apollo/react-hooks'
-
+import {Link} from 'react-router-dom'
 
 const GET_CATEGORIES = gql`
   query { 
@@ -16,10 +16,14 @@ const Home = () => {
   return (
     <>
       {categories.map(category => {
+        category = category.category
         return (
           <div>
-            {category.category}
+            <Link to = {`/${category}`}>
+              {category}
+            </Link>
           </div>
+
         )
       })}
     </>

@@ -9,10 +9,16 @@ type Categories {
   category: String!
 }
 
+type Joke {
+  url: String!
+  value: String!
+}
+
 type Query {
   people: [Nicolas]!
   person(id: Int!): Nicolas
   getCategories: [Categories]!
+  getJoke(category: String!): Joke!
 }
 
 type Mutation {

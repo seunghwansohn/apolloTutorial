@@ -40,7 +40,7 @@ query {
 
 */
 
-import getCategories from '../db/movieAPI'
+import {getCategories, getJoke} from '../db/movieAPI'
 let people = [
   {
     id : 0,
@@ -63,6 +63,10 @@ const resolvers = {
     getCategories: (_, {rating}) => {
       console.log(getCategories(rating))
       return getCategories(rating)
+    },
+    getJoke: (_, {category}) => {
+      getJoke(category).then(result => console.log(result))
+      return getJoke(category)
     }
   },
   Mutation: {
