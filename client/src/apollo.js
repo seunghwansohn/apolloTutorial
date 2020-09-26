@@ -5,6 +5,17 @@ const client = new ApolloClient ({
   resolvers: {
     Joke: {
       favorite: () => false
+    },
+    Mutation: {
+      addFavorite: (_, {id}, {cache}) => {
+        console.log(id)
+        cache.writeData({
+          id: `Joke:${id}`,
+          data: {
+            favorite : true
+          }
+        })
+      }
     }
   }
 })
