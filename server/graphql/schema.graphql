@@ -5,9 +5,14 @@ type Nicolas {
   gender: String!
 }
 
+type Categories {
+  category: String!
+}
+
 type Query {
   people: [Nicolas]!
   person(id: Int!): Nicolas
+  getCategories: [Categories]!
 }
 
 type Mutation {
