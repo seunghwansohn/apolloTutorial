@@ -4,21 +4,21 @@ import {useQuery} from '@apollo/react-hooks'
 
 import {gql} from 'apollo-boost'
 
-
 const GET_JOKES = gql`
-  query {
-    getJoke(category:"animal") {
+  query getJoke($category: String!){
+    getJoke(category: $category) {
       url
       value
     }
-  }
+  } 
 `
 
 const Detail = () => {
   const {id} = useParams();
-  const {data, loading, error, refetch} = useQuery(GET_JOKES)
+  const {data, loading, error, refetch} = useQuery(GET_JOKES, {
+    variables: {category : id} //변수를 담아 보낼땐 이렇게 함
+  })
   const joke = data ? data.getJoke : {url : '', value :''}
-  console.log(data)
   return (
     <>
       {loading ? 
@@ -29,6 +29,7 @@ const Detail = () => {
           <div>{joke.url}</div>
           <div>{joke.value}</div>
           <button onClick = {() => refetch()}>refetch</button>
+          {/* <button onClick = {() => addFavorite()}>favorite</button> */}
         </>
       }
 
