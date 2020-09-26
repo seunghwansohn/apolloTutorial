@@ -7,12 +7,17 @@ import {gql} from 'apollo-boost'
 const GET_JOKES = gql`
   query getJoke($category: String!){
     getJoke(category: $category) {
+      id
       url
       value
+      favorite @client
     }
   } 
 `
 
+const addFavorite = (id) => {
+  console.log(id)
+}
 const Detail = () => {
   const {id} = useParams();
   const {data, loading, error, refetch} = useQuery(GET_JOKES, {
@@ -25,11 +30,12 @@ const Detail = () => {
         "loading"
         :
         <>
-          <div>{id}</div>
+          <h1>{id}</h1>
+          <div>{joke.id}</div>
           <div>{joke.url}</div>
           <div>{joke.value}</div>
           <button onClick = {() => refetch()}>refetch</button>
-          {/* <button onClick = {() => addFavorite()}>favorite</button> */}
+          <button onClick = {() => addFavorite(joke.id)}>favorite</button>
         </>
       }
 
