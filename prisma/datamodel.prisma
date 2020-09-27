@@ -1,0 +1,10 @@
+type User {
+  id: ID! @id
+  name: String!
+}
+
+type Joke {
+  id: ID! @id
+  contents: String!
+  url: String
+}
