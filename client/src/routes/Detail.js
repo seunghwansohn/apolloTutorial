@@ -20,6 +20,11 @@ const ADD_FAVORITE = gql`
     addFavorite(id: $id) @client
   }
 `
+const CHANGE_CONTENTS = gql`
+  mutation changeContents($id: int!) {
+    changeContents(id: $id) @client
+  }
+`
 
 const Detail = () => {
   const {id} = useParams();
@@ -28,6 +33,9 @@ const Detail = () => {
   })
   const joke = data ? data.getJoke : {url : '', value :''}
   const [addFavorite] = useMutation(ADD_FAVORITE, {
+    variables: {id : joke.id} 
+  })
+  const [changeContents] = useMutation(CHANGE_CONTENTS, {
     variables: {id : joke.id} 
   })
   return (
@@ -42,6 +50,7 @@ const Detail = () => {
           <div>{joke.value}</div>
           <button onClick = {() => refetch()}>refetch</button>
           <button onClick = {() => addFavorite(joke.id)}>favorite</button>
+          <button onClick = {() => changeContents(joke.id)}>shut off!</button>
         </>
       }
 

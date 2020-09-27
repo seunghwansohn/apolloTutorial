@@ -15,6 +15,15 @@ const client = new ApolloClient ({
             favorite : true
           }
         })
+      },
+      changeContents: (_, {id}, {cache}) => {
+        console.log(id)
+        cache.writeData({
+          id: `Joke:${id}`,
+          data: {
+            value : 'shut off!'
+          }
+        })
       }
     }
   }
