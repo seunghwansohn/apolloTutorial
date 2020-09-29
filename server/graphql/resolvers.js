@@ -1,3 +1,4 @@
+
 /*
 
 #person 추가
@@ -81,11 +82,13 @@ const resolvers = {
       people = filteredPeople
       return people
     },
-    addNewUser : (_, {name}) => {
-      
+    newUser: async (_,{name}, context) => {
+      await console.log(name)
+      await context.prisma.createUser({
+        name: name,
+      })
+      return await {name}
     }
-
-
   }
 }
 

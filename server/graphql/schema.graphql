@@ -31,4 +31,7 @@ type Mutation {
   deletePerson(
     id: Int!
   ) : [Nicolas]!
+  newUser(
+    name: String
+  ) : Nicolas
 }
