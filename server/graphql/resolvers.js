@@ -80,6 +80,9 @@ const resolvers = {
       const filteredPeople = people.filter(person => person.id !== id)
       people = filteredPeople
       return people
+    },
+    addNewUser : (_, {name}) => {
+      
     }
 
 

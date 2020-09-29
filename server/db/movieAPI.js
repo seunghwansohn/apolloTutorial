@@ -19,3 +19,4 @@ export const getJoke = (category) => {
   return fetch(REQ_URL)
   .then(res => res.json())
 }
+

@@ -11,14 +11,27 @@ const prisma = new Prisma({
 const test = async () => {
   const users = await prisma.users()
   await console.log(users)
-
 }
 
-test()
+// test()
 
+const newUser = async ({name}) => {
+  await console.log(name)
+  await prisma.createUser({
+    name: name,
+  })
+}
+
+newUser({name :'brian'})
 const server = new GraphQLServer({
   typeDefs: "graphql/schema.graphql",
-  resolvers
+  resolvers,
+  context: () => {
+    return {
+      token: 'foo',
+    };
+  }
 })
+
 
 server.start(() => console.log("Graphql Server Running"))
