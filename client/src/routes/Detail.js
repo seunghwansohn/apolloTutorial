@@ -18,8 +18,8 @@ const GET_JOKES = gql`
 //서버로 보내는 쿼리의 경우 이렇게 그냥 각 콤포넌트에서 
 //gql문법만 구성해서 쏴주면 됨.
 const SAVE_JOKE = gql`
-  mutation saveJoke($id: String!){
-    saveJoke(id: $id) {
+  mutation saveJoke($id: String!, $url: String!, $value: String!){
+    saveJoke(id: $id, url: $url, value: $value) {
       id
     }
   }
@@ -49,7 +49,7 @@ const Detail = () => {
     variables: {id : joke.id} 
   })
   const [saveJoke] = useMutation(SAVE_JOKE, {
-    variables: {id : joke.id} 
+    variables: {id : joke.id, value : joke.value, url : joke.url} 
   })
 
   return (

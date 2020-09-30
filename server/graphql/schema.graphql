@@ -34,5 +34,5 @@ type Mutation {
   newUser(
     name: String
   ) : Nicolas
-  saveJoke(id: String!) : Joke
+  saveJoke(id: String!, url: String!, value: String!) : Joke
 }

@@ -88,9 +88,13 @@ const resolvers = {
       })
       return await {name}
     },
-    saveJoke: async (_, {id}, context) => {
+    saveJoke: async (_, {id, value, url}, context) => {
       await console.log(id)
-      return await {id : id, url :'ㄷㄷㄹ', value : 'fdlkjdf'}
+      await context.prisma.createJoke({
+        id,
+        contents: value,
+        url
+      })    
     }
   }
 }
