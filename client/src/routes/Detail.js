@@ -49,7 +49,8 @@ const Detail = () => {
     variables: {id : joke.id} 
   })
   const [saveJoke] = useMutation(SAVE_JOKE, {
-    variables: {id : joke.id, value : joke.value, url : joke.url} 
+    variables: {id : joke.id, value : joke.value, url : joke.url},
+    onError: (e) => console.log(e) // 요걸로 에러를 처리해줘야 리액트 클라이언트 중지가 안됨,
   })
 
   return (
