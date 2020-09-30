@@ -2,7 +2,7 @@ import ApolloClient from 'apollo-boost'
 
 const client = new ApolloClient ({
   uri: 'http://localhost:4000',
-  resolvers: {
+  resolvers: { //클라이언트 전용 resolver
     Joke: {
       favorite: () => false
     },

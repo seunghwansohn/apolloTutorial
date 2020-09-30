@@ -66,7 +66,6 @@ const resolvers = {
       return getCategories(rating)
     },
     getJoke: (_, {category}) => {
-      getJoke(category).then(result => console.log(result))
       return getJoke(category)
     }
   },
@@ -88,6 +87,10 @@ const resolvers = {
         name: name,
       })
       return await {name}
+    },
+    saveJoke: async (_, {id}, context) => {
+      await console.log(id)
+      return await {id : id, url :'ㄷㄷㄹ', value : 'fdlkjdf'}
     }
   }
 }

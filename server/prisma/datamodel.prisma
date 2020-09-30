@@ -8,3 +8,4 @@ type Joke {
   contents: String!
   url: String
 }
+

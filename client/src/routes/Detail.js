@@ -15,6 +15,16 @@ const GET_JOKES = gql`
   } 
 `
 
+//서버로 보내는 쿼리의 경우 이렇게 그냥 각 콤포넌트에서 
+//gql문법만 구성해서 쏴주면 됨.
+const SAVE_JOKE = gql`
+  mutation saveJoke($id: String!){
+    saveJoke(id: $id) {
+      id
+    }
+  }
+`
+
 const ADD_FAVORITE = gql`
   mutation addFavorite($id: int!) {
     addFavorite(id: $id) @client
@@ -38,6 +48,10 @@ const Detail = () => {
   const [changeContents] = useMutation(CHANGE_CONTENTS, {
     variables: {id : joke.id} 
   })
+  const [saveJoke] = useMutation(SAVE_JOKE, {
+    variables: {id : joke.id} 
+  })
+
   return (
     <>
       {loading ? 
@@ -51,6 +65,8 @@ const Detail = () => {
           <button onClick = {() => refetch()}>refetch</button>
           <button onClick = {() => addFavorite(joke.id)}>favorite</button>
           <button onClick = {() => changeContents(joke.id)}>shut off!</button>
+          <button onClick = {() => saveJoke(joke.id)}>saveJoke</button>
+
         </>
       }
 
