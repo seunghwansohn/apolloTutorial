@@ -52,7 +52,11 @@ const Detail = () => {
   const [saveJoke] = useMutation(SAVE_JOKE, {
     variables: {id : joke.id, value : joke.value, url : joke.url},
     onCompleted: (data) => console.log(data),
-    onError: (e) => console.log(e) // 요걸로 에러를 처리해줘야 리액트 클라이언트 중지가 안됨,
+    onError: (e) => console.log(e), // 요걸로 에러를 처리해줘야 리액트 클라이언트 중지가 안됨,
+    update: (cache, mutationResult) => {
+      console.log(mutationResult.data.saveJoke)
+      // cache.modify() //이후로 cache 업데이트 규정하면 됨.
+    }
   })
 
   return (
