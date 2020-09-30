@@ -5,6 +5,11 @@ type Nicolas {
   gender: String!
 }
 
+type status {
+  type: Int!
+  message: String!
+  data: Joke
+}
 type Categories {
   category: String!
 }
@@ -34,5 +39,5 @@ type Mutation {
   newUser(
     name: String
   ) : Nicolas
-  saveJoke(id: String!, url: String!, value: String!) : Joke
+  saveJoke(id: String!, url: String!, value: String!) : status
 }

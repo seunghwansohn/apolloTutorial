@@ -94,7 +94,8 @@ const resolvers = {
         id,
         contents: value,
         url
-      })    
+      })
+      return {type: 200, message: "response success", data : id, contents: value, url}   
     }
   }
 }

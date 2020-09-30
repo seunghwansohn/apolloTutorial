@@ -20,7 +20,8 @@ const GET_JOKES = gql`
 const SAVE_JOKE = gql`
   mutation saveJoke($id: String!, $url: String!, $value: String!){
     saveJoke(id: $id, url: $url, value: $value) {
-      id
+      type,
+      message,
     }
   }
 `
@@ -50,6 +51,7 @@ const Detail = () => {
   })
   const [saveJoke] = useMutation(SAVE_JOKE, {
     variables: {id : joke.id, value : joke.value, url : joke.url},
+    onCompleted: (data) => console.log(data),
     onError: (e) => console.log(e) // 요걸로 에러를 처리해줘야 리액트 클라이언트 중지가 안됨,
   })
 
