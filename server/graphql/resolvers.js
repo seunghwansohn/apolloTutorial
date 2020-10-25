@@ -67,6 +67,9 @@ const resolvers = {
     },
     getJoke: (_, {category}) => {
       return getJoke(category)
+    },
+    getSavedJoke: (_, __, context) => {
+      return context.prisma.jokes()
     }
   },
   Mutation: {

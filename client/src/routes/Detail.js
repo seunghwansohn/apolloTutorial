@@ -4,6 +4,8 @@ import {useQuery, useMutation} from '@apollo/react-hooks'
 
 import {gql} from 'apollo-boost'
 
+import ServerSaved from '../components/ServerSaved'
+
 const GET_JOKES = gql`
   query getJoke($category: String!){
     getJoke(category: $category) {
@@ -75,7 +77,11 @@ const Detail = () => {
           <button onClick = {() => saveJoke(joke.id)}>saveJoke</button>
 
         </>
+
       }
+      <br/>
+      <ServerSaved>
+      </ServerSaved>
 
     </>
   )

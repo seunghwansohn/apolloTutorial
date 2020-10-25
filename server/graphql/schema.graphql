@@ -25,6 +25,7 @@ type Query {
   person(id: Int!): Nicolas
   getCategories: [Categories]!
   getJoke(category: String!): Joke!
+  getSavedJoke: [Joke]
 }
 
 type Mutation {
